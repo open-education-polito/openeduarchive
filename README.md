@@ -47,3 +47,10 @@ Following is an overview of the generated files and folders:
 
 To learn how to configure, customize, deploy and much more, visit
 the [InvenioRDM Documentation](https://inveniordm.docs.cern.ch/).
+
+### Hacks for M1 Mac
+
+1. Enable `sqlalchemy = {extras = ["asyncio"]}` in Pipfile in order to be able
+   to build also on M1 machine.
+2. Depending on your machine architecture, there could be a problem during the local install due to the missing cairo-2 lib. I had to manually install it with `brew install cairo` and then `brew link --force cairo`.
+3. This may not really solve the issue, due to a discoverability issue. So, it's possible that you will have to manually link the missing lib. To do so, run `ln -s /opt/homebrew/lib/libcairo.2.dylib .` in your folder.
