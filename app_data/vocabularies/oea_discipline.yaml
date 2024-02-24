@@ -1,0 +1,156 @@
+- id: architettura
+  title:
+    en: Architecture
+    it: Architettura
+- id: arti_plastiche_scultura
+  title:
+    en: Plastic Arts, Sculpture
+    it: Arti plastiche scultura
+- id: arti_ricreative_spettacolo
+  title:
+    en: Recreational Arts and Entertainment
+    it: Arti ricreative e dello spettacolo
+- id: astronomia
+  title:
+    en: Astronomy
+    it: Astronomia
+- id: biografie
+  title:
+    en: Biographies
+    it: Biografie
+- id: chimica
+  title:
+    en: Chemistry
+    it: Chimica
+- id: diritto
+  title:
+    en: Law
+    it: Diritto
+- id: disegno_arti_decorative_minor
+  title:
+    en: Drawing, Decorative and Minor Arts
+    it: Disegno, arti decorative e minori
+- id: educazione
+  title:
+    en: Education
+    it: Educazione
+- id: epistemologia_causalita_genere_umano
+  title:
+    en: Epistemology, Causality, Human Gender
+    it: Epistemologia, causalita, genere umano
+- id: etica_filosofia_morale
+  title:
+    en: Ethics (moral philosophy)
+    it: Etica (filosofia morale)
+- id: filosofia_antica_medievale_orientale
+  title:
+    en: Ancient, Medieval, Eastern Philosophy
+    it: Filosofia antica, medievale, orientale
+- id: filosofia_e_psicologia
+  title:
+    en: Philosophy and Psychology
+    it: Filosofia e psicologia
+- id: filosofia_occidentale_moderna
+  title:
+    en: Western Modern Philosophy
+    it: Filosofia occidentale moderna
+- id: fotografia_fotografie
+  title:
+    en: Photography and Photographs
+    it: Fotografia e fotografie
+- id: geografia_generale
+  title:
+    en: General Geography
+    it: Geografia generale
+- id: ingegneria_e_operazioni_affini
+  title:
+    en: Engineering and Related Operations
+    it: Ingegneria e operazioni affini
+- id: informatica
+  title:
+    en: Computer Science
+    it: Informatica
+- id: logica
+  title:
+    en: Logic
+    it: Logica
+- id: matematica
+  title:
+    en: Mathematics
+    it: Matematica
+- id: medicina
+  title:
+    en: Medical Sciences and Medicine
+    it: Scienze mediche medicina
+- id: metafisica
+  title:
+    en: Metaphysics (speculative philosophy)
+    it: Metafisica (filosofia speculativa)
+- id: musica
+  title:
+    en: Music
+    it: Musica
+- id: paleontologia_paleozoologia
+  title:
+    en: Paleontology and Paleozoology
+    it: Paleontologia paleozoologia
+- id: pittura
+  title:
+    en: Painting
+    it: Pittura
+- id: psicologia
+  title:
+    en: Psychology
+    it: Psicologia
+- id: religione
+  title:
+    en: Religion
+    it: Religione
+- id: scienza_politica
+  title:
+    en: Political Science (politics and government)
+    it: Scienza politica (politica e governo)
+- id: scienze_botaniche
+  title:
+    en: Botanical Sciences
+    it: Scienze botaniche
+- id: scienze_della_terra
+  title:
+    en: Earth Sciences
+    it: Scienze della terra
+- id: scienze_del_linguaggio
+  title:
+    en: Language Sciences
+    it: Scienze del linguaggio
+- id: scienze_della_vita
+  title:
+    en: Life Sciences
+    it: Scienze della vita
+- id: scienze_mediche_medicina
+  title:
+    en: Medical Sciences and Medicine
+    it: Scienze mediche medicina
+- id: scienze_sociali
+  title:
+    en: Social Sciences
+    it: Scienze sociali
+- id: scienze_zoologiche
+  title:
+    en: Zoological Sciences
+    it: Scienze zoologiche
+- id: specifiche_posizioni_filosofiche
+  title:
+    en: Specific Philosophical Positions
+    it: Specifiche posizioni filosofiche
+- id: storia
+  title:
+    en: History
+    it: Storia
+- id: tecnologie_chimiche
+  title:
+    en: Chemical Technologies
+    it: Tecnologie chimiche
+- id: urbanistica_arte_del_paesaggio
+  title:
+    en: Urban Planning and Landscape Art
+    it: Urbanistica e arte del paesaggio
