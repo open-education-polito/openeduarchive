@@ -80,6 +80,7 @@ class OEARecordPermissionPolicy(RDMRecordPermissionPolicy):
         )
     ]
 
+    # Remove community from an already created record just if it has more than one community
     can_remove_community = [
         IfOneCommunity(
             then_=RDMRecordPermissionPolicy.can_remove_community,
