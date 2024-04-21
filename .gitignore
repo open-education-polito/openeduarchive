@@ -79,3 +79,6 @@ libcairo.2.*
 
 # .invenio
 .invenio
+
+# MacOS Stuff
+.DS_Store
