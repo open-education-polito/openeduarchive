@@ -48,6 +48,12 @@ Following is an overview of the generated files and folders:
 To learn how to configure, customize, deploy and much more, visit
 the [InvenioRDM Documentation](https://inveniordm.docs.cern.ch/).
 
+
+### Notes
+
+* When creating a new field with the relevant vocabulary and UI, it is necessary to run `invenio rdm-records fixtures` to update the database with the new field and its vocabulary.
+
+
 ### Hacks for M1 Mac
 
 1. Enable `sqlalchemy = {extras = ["asyncio"]}` in Pipfile in order to be able

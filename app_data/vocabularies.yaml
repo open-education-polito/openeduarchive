@@ -24,3 +24,10 @@ subjects:
 #       name: Research Organization Registry
 #       uri: "https://ror.org/"
 #       data-file: vocabularies/affiliations_ror.yaml
+oeaDiscipline:
+  pid-type: oead
+  data-file: vocabularies/oea_discipline.yaml
+
+oeaEducationLevel:
+  pid-type: oeaed
+  data-file: vocabularies/oea_education_level.yaml

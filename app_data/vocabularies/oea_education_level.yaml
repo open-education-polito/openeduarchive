@@ -1,0 +1,24 @@
+- id: divulgazione
+  title:
+    en: Divulgation
+    it: Divulgazione
+- id: scuolaOspedaliera
+  title:
+    en: Hospital School
+    it: Scuola Ospedaliera
+- id: scuolaPrimaria
+  title:
+    en: Primary School
+    it: Scuola Primaria
+- id: scuolaSecondariaPrimoGrado
+  title:
+    en: Secondary School
+    it: Scuola Secondaria Primo Grado 
+- id: scuolaSecondariaSecondoGrado
+  title:
+    en: High School
+    it: Scuola Secondaria Secondo Grado
+- id: universita
+  title:
+    en: University
+    it: Università
