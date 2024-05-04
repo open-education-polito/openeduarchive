@@ -8,4 +8,13 @@
  * Add here all the overridden components of your app.
  */
 
-export const overriddenComponents = {}
+import { MetadataToggle } from "../../components/deposit_ui/overrides/MetadataToggle";
+
+export const overriddenComponents = {
+    "ReactInvenioDeposit.FileUploaderToolbar.MetadataOnlyToggle.container": MetadataToggle,
+    "InvenioAppRdm.Deposit.AccordionFieldFunding.container": () => null,
+    "InvenioAppRdm.Deposit.AccordionFieldReferences.container": () => null,
+    "InvenioAppRdm.Deposit.AccordionFieldAlternateIdentifiers.container": () => null,
+    "InvenioAppRdm.Deposit.AccordionFieldRelatedWorks.container": () => null,
+    "InvenioAppRdm.Deposit.AccordionFieldRecommendedInformation.container": () => null,
+};
