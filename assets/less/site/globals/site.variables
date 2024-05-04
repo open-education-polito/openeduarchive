@@ -1,0 +1,10 @@
+/* Override @primaryColor to override the site-wide accents. */
+@primaryColor: #214a7f;
+
+/* Header */
+/* Background Image */
+@navbarBackgroundImage: url("../../../images/header_background.png");
+
+/* Footer */
+@footerLightColor: #335d90;
+@footerDarkColor: @brandColor;
