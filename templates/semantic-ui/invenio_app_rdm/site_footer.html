@@ -1,0 +1,24 @@
+<div class="footer-bottom">
+    <div class="ui inverted container">
+      <div class="ui grid">
+        <div class="eight wide column left middle aligned">
+          <p>
+            Handcrafted @ <a href="https://openeducation.polito.it">Open Education Polito</a>
+          </p>
+          <p class="m-0">
+            Open Education Archive - <i class="magic icon"></i>Experimental version {{ config['OEA_VERSION']}}
+          </p>
+        </div>
+
+        <div class="eight wide column right aligned">
+          {%- block footer_bottom_right %}
+            {%- if config.I18N_LANGUAGES %}
+              {% from "invenio_i18n/macros/language_selector.html" import language_selector_dropdown %}
+              {{ language_selector_dropdown() }}
+            {%- endif %}
+          {%- endblock footer_bottom_right %}
+        </div>
+
+      </div>
+    </div>
+  </div>
