@@ -1,0 +1,33 @@
+{#
+    Copyright (C) 2019-2020 CERN.
+    Copyright (C) 2019-2020 Northwestern University.
+    Copyright (C) 2021 Graz University of Technology.
+  
+    Invenio App RDM is free software; you can redistribute it and/or modify it
+    under the terms of the MIT License; see LICENSE file for more details.
+  #}
+  {%- block footer_top %}
+    <div class="footer-top">
+      <div class="ui container app-rdm-footer">
+        {%- block footer_top_left %}
+          <div class="ui grid app-rdm-footer">
+          <div class="rdm-footer five wide tablet two wide computer column">
+            <h2 class="ui small header">{{ _("About Open Education Archive") }}</h2>
+              <p><a href="{{ invenio_rdm_features }}">Caratteristiche</a></p>
+          </div>
+          <div class="rdm-footer five wide tablet two wide computer column">
+            <h2 class="ui small header">{{ _ ("Sali a bordo") }}</h2>
+              <p><a href="https://github.com/open-education-polito">GitHub</a></p>
+              <p><a href="https://github.com/orgs/open-education-polito/projects/8/views/1">Roadmap</a></p>
+          </div>
+  
+        {%- endblock footer_top_left %}
+        <div class="six wide column right aligned">
+          {%- block footer_top_right %}
+          {%- endblock footer_top_right %}
+        </div>
+        </div>
+      </div>
+  
+    </div>
+  {%- endblock footer_top %}
