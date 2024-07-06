@@ -1,0 +1,121 @@
+# Prod infrastructure stack
+#
+# Usage:
+#
+#   $ docker-compose up -f docker-compose.oea.prod.yml -d
+#
+# Following services are included:
+# - Frontend: Nginx (exposed ports: 80 and 443)
+# - UI application: UWSGI (not exposed)
+# - API application: UWSGI (not exposed)
+# - Cache: Redis (exposed port: 6379)
+# - DB: (PostgresSQL) (exposed port: 5432 or 3306)
+# - Message queue: RabbitMQ (exposed ports: 5672, 15672)
+# - Search platform: (OpenSearch) (exposed ports: 9200, 9300)
+#
+
+# TODO: Check all values not suitable for production
+# TODO: Check all ports! Why do we need to expose so many ports? Weird.
+# TODO: app now has ENVIRONMENT=DEV setup, we should change this (to PROD?)
+# TODO: ENSURE THAT ALL ENV VARS ARE TAKEN FROM .env FILE! Double check this somehow (a dedicated script should work?)
+# TODO: ENSURE we are using the right volumes in the prod environment
+# TODO: Understand if it is feasible to keep a separate infra repo in order to store this files
+# WIP workflow:
+# 1. Push to PR
+# 2. Trigger dev build through GHActions in order to run tests
+# 3. Merge to main
+# 4. Tag (auto-tag? Manually tag?). 
+# 5. Tag triggers "prod build" in other repo? Feasible?
+# 5a. I would like to generate a prod-like dockerfile that it is pushed on some registry and stored
+# 5b. This prod-like build should really be prod-like but without having any sort of hardcoded info.
+# In this case it could potentially stay on a public registry. Check this please. 
+# 6. Pull from remote
+# 7. Use docker swarm for orchestration (deploy the new version)
+# Questions:
+# a. Is this "safe" to do in the public repo? Probably yes, since all the relevant data for production are stored in
+# ENV VARS that can be pushed via .env file.
+# What about things stored inside invenio.cfg? Probably it's the same, but we should check it carefully!
+
+version: '2.2'
+services:
+  cache:
+    extends:
+      file: docker-services.yml
+      service: cache
+  db:
+    extends:
+      file: docker-services.yml
+      service: db
+  mq:
+    extends:
+      file: docker-services.yml
+      service: mq
+  search:
+    # TODO: extend for details not suitable for production (see L 66-70 docker-services.yml)
+    extends:
+      file: docker-services.yml
+      service: search
+
+  # Frontend
+  frontend:
+    extends:
+      file: docker-services.yml
+      service: frontend
+    volumes:
+      - static_data:/opt/invenio/var/instance/static
+    depends_on:
+      - web-ui
+      - web-api
+    ports:
+      - "80:80"
+      - "443:443"
+
+  # UI Application
+  web-ui:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["uwsgi /opt/invenio/var/instance/uwsgi_ui.ini"]
+    image: openeduarchive:latest
+    ports:
+      - "5000"
+    volumes:
+      - static_data:/opt/invenio/var/instance/static
+      - uploaded_data:/opt/invenio/var/instance/data
+      - archived_data:/opt/invenio/var/instance/archive
+
+  # API Rest Application
+  web-api:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["uwsgi /opt/invenio/var/instance/uwsgi_rest.ini"]
+    image: openeduarchive:latest
+    ports:
+      - "5000"
+    volumes:
+      - uploaded_data:/opt/invenio/var/instance/data
+      - archived_data:/opt/invenio/var/instance/archive
+
+  # Worker
+  worker:
+    extends:
+      file: docker-services.yml
+      service: app
+    command: ["celery -A invenio_app.celery worker --beat --loglevel=INFO"]
+    image: openeduarchive:latest
+    volumes:
+      - uploaded_data:/opt/invenio/var/instance/data
+    depends_on:
+      search:
+        condition: service_started
+      cache:
+        condition: service_started
+      db:
+        condition: service_started
+      mq:
+        condition: service_started
+volumes:
+  static_data:
+  uploaded_data:
+  archived_data:
