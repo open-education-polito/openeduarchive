@@ -7,9 +7,27 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build_pr:
     runs-on: ubuntu-latest
 
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build Docker image for PR
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        tags: |
+          ghcr.io/${{ github.repository }}/openeducationarchive:${{ github.sha }}
+        push: false
+
+  build_release:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -28,10 +46,11 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         context: .
-        push: true
         tags: |
-          ghcr.io/${{ github.repository }}/my-app:${{ github.ref_name }}
-          ghcr.io/${{ github.repository }}/my-app:latest
+          ghcr.io/${{ github.repository }}/openeducationarchive:${{ github.ref_name }}
+        push: true
 
     - name: Log out from GitHub Container Registry
       run: docker logout ghcr.io
+
+
