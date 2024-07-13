@@ -12,3 +12,7 @@ To store a new one, install and use adr-tools like:
 ## CLI Commands
 
 For a list of useful CLI instructions for this instance, please see `/doc/commands.md`.
+
+
+## License
+GNU Affero GPL v3.0 or later. Check LICENSE.md for reference.
