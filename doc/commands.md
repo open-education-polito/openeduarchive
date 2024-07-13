@@ -15,10 +15,13 @@ This file contains a set of vital commands to handle the OEA instance correctly.
 ## Launch
 
 ### Local run
+
+```bash
 invenio-cli run
 invenio-cli services setup -N -f
 invenio-cli services start
 invenio-cli services destroy
+``` 
 
 ### Docker env
 
