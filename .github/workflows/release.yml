@@ -27,7 +27,7 @@ jobs:
       with:
         context: .
         tags: |
-          ghcr.io/${{ github.repository }}/openeducationarchive:${{ github.ref_name }}
+          ghcr.io/${{ github.repository }}/openeduarchive:${{ github.ref_name }}
         push: true
 
     - name: Log out from GitHub Container Registry
