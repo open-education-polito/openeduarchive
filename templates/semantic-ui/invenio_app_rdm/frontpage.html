@@ -5,77 +5,129 @@
   
     Invenio App RDM is free software; you can redistribute it and/or modify it
     under the terms of the MIT License; see LICENSE file for more details.
-  #}
+#}
 
-  {% from "invenio_app_rdm/macros/records_list.html" import records_list %}
-  {% from "invenio_communities/macros/communities_carousel.html" import communities_carousel %}
-  
-  {%- extends "invenio_theme/frontpage.html" %}
-  
-  {%- block page_header %}
-    {%- include "invenio_app_rdm/header_frontpage.html" %}
-  {%- endblock page_header %}
-  
-  {%- block page_body %}
-  
-    {%- block intro_section %}
-      {% if show_intro_section %}
-        {% include "invenio_app_rdm/intro_section.html" %}
-      {% endif %}
-    {%- endblock intro_section %}
-  
-    {%- block top_banner %}
-      {{ communities_carousel() }}
-    {%- endblock top_banner %}
-  
-    {%- block grid_section %}
-      <div class="ui stackable grid container rel-mt-2">
-  
-        {% block main_column %}
-          <div class="eleven wide computer sixteen wide tablet column">
-  
-            {% block main_column_content %}
-              {{ records_list() }}
-            {% endblock main_column_content %}
-  
+{% from "invenio_app_rdm/macros/records_list.html" import records_list %}
+{% from "invenio_communities/macros/communities_carousel.html" import communities_carousel %}
+
+{%- extends "invenio_theme/frontpage.html" %}
+
+{%- block page_header %}
+  {%- include "invenio_app_rdm/header_frontpage.html" %}
+{%- endblock page_header %}
+
+{%- block page_body %}
+
+  {%- block intro_section %}
+    {% if show_intro_section %}
+      {% include "invenio_app_rdm/intro_section.html" %}
+    {% endif %}
+  {%- endblock intro_section %}
+
+  {%- block grid_section %}
+    {%- block first_section %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/oea.css') }}">
+    <div class="get-started-section section-content jumbothree">
+      <h2 class="section-title">
+        Libreria curata di contenuti didattici revisionati
+      </h2>
+      
+      <div class="ui container three column stackable grid center aligned vertically padded relaxed">
+        <div class="rdm-goal column">
+          <div class="icon-container">
+            <i class="search large icon icon-wrapper"></i>
           </div>
-        {% endblock main_column %}
-  
-        {% block side_column %}
-          <aside class="five wide computer sixteen wide tablet column">
-  
-            {% block side_column_content %}
-            <section class="sidebar-container">
-                <h2 class="ui medium top attached header center aligned content mt-0">{{ _("Open Education Archive") }} </h2>
-                <div class="ui segment bottom attached rdm-sidebar">
-                    <p><strong> L'archivio delle risorse educative aperte italiane.</strong></p>
-                  <ul class="m-0">
-                    <li>
-                        <strong>OER</strong> — Una vasta collezione di Open Educational Resources in lingua italiana, pronte all'uso. 
-                      </li>
-                    <li>
-                        <strong>Aperto</strong> — Contenuti con licenze aperte che permettono il riuso, la modifica e la condivisione.
-                    </li>
-                    <li>
-                        <strong>Peer Rewiew</strong> — Ogni contenuto è verificato da un team di revisori per garantire massima aderenza agli standard di qualità.
-                    </li>
-                    <li>
-                        <strong>Libero</strong> — Piattaforma composta esclusivamente da Software Libero per garantire trasparenza e possibilità di riuso. 
-                    </li>
-                    <li>
-                        <strong>Ampio</strong> — Materiale didattico adatto a tutti i livelli, in ottica di <i>lifelong learning</i>.
-                    </li>
-                  </ul>
-                </div>
-              </section>
-            {% endblock side_column_content %}
-  
-          </aside>
-        {% endblock side_column %}
+          <h3 class="section-title">
+            <a href="{{ url_for('invenio_search_ui.search') }}" >Ricerca e Esplora</a>
+          </h3>
+          <div class="command-line">
+            Contenuti per tutte le scuole di ogni ordine e grado.
+          </div>
+        </div>
+        <div class="rdm-goal column">
+          <div class="icon-container">
+            <i class="pencil alternate large icon icon-wrapper"></i>
+          </div>
+          <h3 class="section-title">
+            <a href="{{ url_for('invenio_app_rdm_records.deposit_create') }}" >Carica contenuti</a>
+          </h3>
+          <div class="command-line">
+            Contribuisci alla crescita organica del catalogo con i tuoi contenuti
+          </div>
+        </div>
+        <div class="rdm-goal column">
+          <div class="icon-container">
+            <i class="users alternate large icon icon-wrapper"></i>
+          </div>
+          <h3 class="section-title">
+            <a href="{{ url_for('invenio_communities.communities_frontpage') }}" >Unisciti a una Comunità</a>
+          </h3>
+          <div class="command-line">
+            Diventa parte del team che cura e modera i contenuti
+          </div>
+        </div>
       </div>
-    {%- endblock grid_section %}
-  
-    {%- block bottom_section %}
-    {%- endblock bottom_section %}
-  
-  {%- endblock page_body %}
+    </div>
+    {%- endblock first_section %}
+
+    {%- block top_banner %}
+    {{ communities_carousel() }}
+    {%- endblock top_banner %}
+
+    {%- block second_section %}
+    <div class="get-started-section section-content jumbored">
+      <h2 class="section-title">
+        L'archivio delle risorse educative aperte italiane
+      </h2>
+
+      <div class="ui container one column stackable grid center aligned vertically padded relaxed">
+        <div class="three wide computer column stackable grid center aligned vertically padded relaxed">
+          <h3 class="section-title">OER</h3>
+          <div class="command-line">
+            Una vasta collezione di <b><i>Open Educational Resources</i></b> in lingua italiana, pronte all'uso.
+          </div>
+        </div>
+        <div class="three wide computer column">
+          <h3 class="section-title">Aperto</h3>
+          <div class="command-line">
+            Contenuti con <b>licenze aperte</b> che permettono il riuso, la modifica e la condivisione.
+          </div>
+        </div>
+        <div class="three wide computer column">
+          <h3 class="section-title">Peer Review</h3>
+          <div class="command-line">
+            Ogni contenuto è <b>verificato da un team di revisori</b> per garantire massima aderenza agli standard di qualità.
+          </div>
+        </div>
+        <div class="three wide computer column">
+          <h3 class="section-title">Libero</h3>
+          <div class="command-line">
+            Piattaforma composta <b>esclusivamente da Software Libero</b> per garantire trasparenza e possibilità di riuso.
+          </div>
+        </div>
+        <div class="three wide computer column">
+          <h3 class="section-title">Ampio</h3>
+          <div class="command-line">
+            Materiale didattico <b>adatto a tutti</b> i livelli, in ottica di <i>lifelong learning</i>.
+          </div>
+        </div>
+      </div>
+    </div>
+    {%- endblock second_section %}
+
+    <div class="ui grid container rel-mt-2">
+      {% block main_column %}
+        <div class="eleven wide computer sixteen wide tablet column">
+          {% block main_column_content %}
+            {{ records_list() }}
+          {% endblock main_column_content %}
+        </div>
+      {% endblock main_column %}
+    </div>
+  {%- endblock grid_section %}
+
+  {%- block bottom_section %}
+  {%- endblock bottom_section %}
+
+{%- endblock page_body %}
+
