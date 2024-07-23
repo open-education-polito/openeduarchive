@@ -46,6 +46,10 @@ process: `invenio-cli containers start --lock --build --setup`
 * Adding vocabularies:  
 `invenio vocabularies import -f app_data/vocabularies/oea_education_level.yaml`
 
+## Troubleshooting
+1. When dealing with the `static` volume, it is necessary to wipe it somehow (just don't run docker down, but maybe docker stop). To wipe it, use `docker volume rm static_data`
+
+
 ### Hacks for M1 Mac
 
 1. Enable `sqlalchemy = {extras = ["asyncio"]}` in Pipfile in order to be able
