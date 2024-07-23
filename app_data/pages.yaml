@@ -1,0 +1,5 @@
+# list of pages:
+- url: /guida
+  title: Benvenuti su Open Education Archive (OEA)
+  description: Guida all'uso
+  template: guida.html
