@@ -10,16 +10,14 @@ This file contains a set of vital commands to handle the OEA instance correctly.
 `invenio roles add <email> admin`
 
 
-
-
 ## Launch
 
 ### Local run
 
 ```bash
-invenio-cli run
-invenio-cli services setup -N -f
+invenio-cli services setup -N -f # It builds everything from scrath, careful!
 invenio-cli services start
+invenio-cli run
 invenio-cli services destroy
 ``` 
 
