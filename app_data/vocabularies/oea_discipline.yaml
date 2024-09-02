@@ -54,6 +54,10 @@
   title:
     en: Western Modern Philosophy
     it: Filosofia occidentale moderna
+- id: fisica
+  title:
+    en: Physics
+    it: Fisica
 - id: fotografia_fotografie
   title:
     en: Photography and Photographs
