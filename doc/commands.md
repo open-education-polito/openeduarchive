@@ -36,7 +36,7 @@ process: `invenio-cli containers start --lock --build --setup`
 
 ## Vocabularies
 
-* When creating a new field with the relevant vocabulary and UI, it is necessary to run `invenio rdm-records fixtures` to update the database with the new field and its vocabulary.
+* When creating a new field with the relevant vocabulary and UI, it is necessary to run `invenio rdm-records fixtures` to update the database with the new field and its vocabulary. If it does not work, it should be possible to run `invenio rdm-records add-to-fixture oeaDiscipline` obviously changing the relevant details of the call.
 
 * Adding custom fields:  
 `invenio rdm-records custom-fields init -f oea:educationLevel`
