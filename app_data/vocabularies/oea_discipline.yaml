@@ -30,6 +30,10 @@
   title:
     en: Drawing, Decorative and Minor Arts
     it: Disegno, arti decorative e minori
+- id: economy
+  title:
+    en: Economy
+    it: Economia
 - id: educazione
   title:
     en: Education
