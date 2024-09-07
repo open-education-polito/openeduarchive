@@ -7,6 +7,7 @@ verify_ssl = true
 check-manifest = ">=0.25"
 
 [packages]
+# Workaround for macos M1 machines
 sqlalchemy = {extras = ["asyncio"]}
 openeduarchive = {editable="True", path="./site"}
 uwsgi = ">=2.0"
