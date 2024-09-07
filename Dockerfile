@@ -1,12 +1,12 @@
-# Dockerfile that builds a fully functional image of your app.
+# Dockerfile that builds a fully functional image of openeduarchive.
 #
 # This image installs all Python dependencies for your application. It's based
 # on Almalinux (https://github.com/inveniosoftware/docker-invenio)
 # and includes Pip, Pipenv, Node.js, NPM and some few standard libraries
 # Invenio usually needs.
 #
-# Note: It is important to keep the commands in this file in sync with your
-# bootstrap script located in ./scripts/bootstrap.
+# Used by Github actions to build the image and push it to the local registry.
+
 
 FROM registry.cern.ch/inveniosoftware/almalinux:1
 
