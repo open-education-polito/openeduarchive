@@ -9,11 +9,11 @@ check-manifest = ">=0.25"
 [packages]
 # Workaround for macos M1 machines
 sqlalchemy = {extras = ["asyncio"]}
-openeduarchive = {editable="True", path="./site"}
+openeduarchive = {editable=true, path="./site"}
 uwsgi = ">=2.0"
 uwsgitop = ">=0.11"
 uwsgi-tools = ">=1.1.1"
-invenio-app-rdm = {extras = ["opensearch2", "postgresql"], version = "==12.0.9"}
+invenio-app-rdm = {extras = ["opensearch2", "postgresql"], version = "==12.0.10"}
 requests = "==2.31.0"
 
 # Adding python-dotenv to read .env
@@ -24,5 +24,3 @@ python_version = "3.9"
 
 [pipenv]
 allow_prereleases = false
-
-# Extra for quick fix
