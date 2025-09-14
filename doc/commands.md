@@ -1,6 +1,55 @@
 # Commands
 
-This file contains a set of vital commands to handle the OEA instance correctly.
+A set of vital commands to handle the OEA instance correctly.
+
+## Local development
+
+It's possible to run the application locally in different ways:
+
+1. launching `invenio` locally and installing the dependencies manually on your own machine (e.g., redis, elasticsearch, rabbitmq).
+2. Using a combination of `invenio` locally and `docker-compose` (for all the other services).
+3. Running all the services via docker compose.
+
+For the sake of simplicity, we recommend using option 2. for the local development and option 3 to test a production-like environment locally.
+
+### 2. Local `invenio` + `docker-compose`
+
+#### Setup
+
+The FIRST time you are setting up the local services, you need to run the following commands:
+```bash
+python3 -m virtualenv .venv
+.source .venv/bin/activate
+invenio-cli services setup -N -f
+invenio-cli services start
+invenio-cli run
+```
+
+
+#### Run 
+
+If you have already done the setup, you don't need to run the `invenio-cli services setup -N -f` command again.
+You can just run `invenio-cli services start` and `invenio-cli run` to start the services and run the application.
+
+
+#### Destroy
+
+If you want to destroy the docker services, you can run the following command:
+
+```bash
+invenio-cli services destroy
+```
+
+
+### Docker env
+
+* The command first builds the application docker image and afterwards
+starts the application and related services (database, Elasticsearch, Redis
+and RabbitMQ). The build and boot process will take some time to complete,
+especially the first time as docker images have to be downloaded during the
+process: `invenio-cli containers start --lock --build --setup`
+
+
 
 
 ## User management
@@ -10,26 +59,6 @@ This file contains a set of vital commands to handle the OEA instance correctly.
 `invenio roles add <email> admin`
 
 
-
-
-## Launch
-
-### Local run
-
-```bash
-invenio-cli run
-invenio-cli services setup -N -f
-invenio-cli services start
-invenio-cli services destroy
-``` 
-
-### Docker env
-
-* The command first builds the application docker image and afterwards
-starts the application and related services (database, Elasticsearch, Redis
-and RabbitMQ). The build and boot process will take some time to complete,
-especially the first time as docker images have to be downloaded during the
-process: `invenio-cli containers start --lock --build --setup`
 
 
 * After change in a JS / CSS file:  
