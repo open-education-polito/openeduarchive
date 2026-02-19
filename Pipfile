@@ -13,8 +13,9 @@ openeduarchive = {editable=true, path="./site"}
 uwsgi = ">=2.0"
 uwsgitop = ">=0.11"
 uwsgi-tools = ">=1.1.1"
-invenio-app-rdm = {extras = ["opensearch2", "postgresql"], version = "==12.0.10"}
-requests = "==2.31.0"
+invenio-app-rdm = {extras = ["opensearch2"], version = "~=13.0.0"}
+sentry-sdk = {extras = ["flask"], version = ">=1.0.0,<2.0.0"}
+setuptools = ">=69.0,<81"
 
 # Adding python-dotenv to read .env
 python-dotenv = "*"
@@ -23,7 +24,7 @@ python-dotenv = "*"
 msal = ">=1.28,<2"
 
 [requires]
-python_version = "3.9"
+python_version = "3.11"
 
 [pipenv]
 allow_prereleases = false
