@@ -1,0 +1,13 @@
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-name: "invenio-app-rdm"
+      - dependency-name: "uwsgi"
+      - dependency-name: "uwsgitop"
+      - dependency-name: "uwsgi-tools"
+      - dependency-name: "requests"
+      - dependency-name: "python-dotenv"
