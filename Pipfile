@@ -19,6 +19,9 @@ requests = "==2.31.0"
 # Adding python-dotenv to read .env
 python-dotenv = "*"
 
+# MSAL for OAuth2 SMTP authentication with Microsoft 365
+msal = ">=1.28,<2"
+
 [requires]
 python_version = "3.9"
 
