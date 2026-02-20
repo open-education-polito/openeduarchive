@@ -13,7 +13,7 @@ openeduarchive = {editable=true, path="./site"}
 uwsgi = ">=2.0"
 uwsgitop = ">=0.11"
 uwsgi-tools = ">=1.1.1"
-invenio-app-rdm = {extras = ["opensearch2", "postgresql"], version = "==12.0.10"}
+invenio-app-rdm = {extras = ["opensearch2", "postgresql"], version = "==13.0.8"}
 requests = "==2.31.0"
 
 # Adding python-dotenv to read .env
