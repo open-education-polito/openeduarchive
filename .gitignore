@@ -82,3 +82,10 @@ libcairo.2.*
 
 # MacOS Stuff
 .DS_Store
+
+# Environment secrets
+.env
+.env.*
+
+# Remove testing tokens
+oauth2_token_cache.json
