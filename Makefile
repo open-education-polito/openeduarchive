@@ -1,8 +1,8 @@
 .PHONY: local setup run stop destroy assets check-requirements help
 
 # ─── Configurable ─────────────────────────────────────────────────────────────
-PYTHON         := python3.9
-REQUIRED_PYTHON := 3.9
+PYTHON         := python3.11
+REQUIRED_PYTHON := 3.11
 VENV          := .venv
 REQUIRED_NODE := 18
 REQUIRED_DOCKER := 20
@@ -69,7 +69,7 @@ check-requirements: _check-python _check-node _check-docker _check-invenio-cli
 _check-python:
 	@echo "→ Checking Python..."
 	@$(PYTHON) --version > /dev/null 2>&1 || \
-		(echo "✗ '$(PYTHON)' not found. Install a $(REQUIRED_PYTHON).x via pyenv: pyenv install $(REQUIRED_PYTHON) && pyenv local $(REQUIRED_PYTHON)" && exit 1)
+		(echo "✗ '$(PYTHON)' not found. Install Python $(REQUIRED_PYTHON).x via pyenv: pyenv install $(REQUIRED_PYTHON) && pyenv local $(REQUIRED_PYTHON)" && exit 1)
 	@py_ver=$$($(PYTHON) -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"); \
 	if [ "$$py_ver" != "$(REQUIRED_PYTHON)" ]; then \
 		echo "✗ Python $$py_ver found but $(REQUIRED_PYTHON).x is required."; \
