@@ -47,8 +47,57 @@ process: `invenio-cli containers start --lock --build --setup`
 `invenio vocabularies import -f app_data/vocabularies/oea_education_level.yaml`
 
 ## Troubleshooting
+
+### KeyError: 'video' / 'lesson' / any resource type — API returns 500
+
+**Symptom:** `/api/records` returns HTTP 500 with a traceback ending in `KeyError: 'video'` (or another resource type) in `facets.py`.
+
+**Cause:** The facet `label_map` cannot find the label for a resource type that exists in the OpenSearch index but not in the vocabulary loaded in the DB. This happens after partial restarts or when vocabularies were not loaded correctly.
+
+**Quick fix (without rebuild):**
+
+Apply the patch on the fly in the container (already included in the Dockerfile from the next build):
+```bash
+docker exec -it prod-web-api-1 bash
+sed -i 's/"label": label_map\[key\]/"label": label_map.get(key, key)/g' /usr/local/lib/python3.9/site-packages/invenio_records_resources/services/records/facets/facets.py
+kill -HUP 1
+exit
+```
+
+If the problem persists after the patch, reload the vocabularies:
+```bash
+docker exec -it prod-web-api-1 bash
+invenio rdm fixtures
+invenio vocabularies import -f app_data/vocabularies/oea_education_level.yaml
+invenio vocabularies import -f app_data/vocabularies/oea_discipline.yaml
+exit
+```
+
+**Note:** This patch is a workaround for upstream bug [invenio-records-resources#663](https://github.com/inveniosoftware/invenio-records-resources/pull/663), not yet merged. Once a version including the fix is released, remove the related `RUN sed -i` from the `Dockerfile`.
+
+---
+
+### ValueError: too many values to unpack — crash on /account/settings/applications/
+
+**Symptom:** The API key creation page (`/account/settings/applications/clients/new/`) returns HTTP 500 with `ValueError: too many values to unpack (expected 3)` in `form_styling.py`.
+
+**Cause:** Incompatibility between WTForms 3.x and `invenio_oauth2server`: `iter_choices()` returns 4 values instead of 3.
+
+**Quick fix (without rebuild):**
+```bash
+docker exec -it prod-web-ui-1 bash
+sed -i 's/for val, label, selected in field.iter_choices()/for val, label, selected, *_ in field.iter_choices()/g' /usr/local/lib/python3.9/site-packages/invenio_oauth2server/theme/semantic/form_styling.py
+kill -HUP 1
+exit
+```
+
+---
+
+### Corrupted static volume
+
 1. When dealing with the `static` volume, it is necessary to wipe it somehow (just don't run docker down, but maybe docker stop). To wipe it, use `docker volume rm static_data`
 
+---
 
 ### Hacks for M1 Mac
 
