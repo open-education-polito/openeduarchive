@@ -25,6 +25,10 @@ COPY ./ .
 # KeyError in facets label_map when a resource type exists in OpenSearch but not in vocabulary
 RUN sed -i 's/"label": label_map\[key\]/"label": label_map.get(key, key)/g' /usr/local/lib/python3.9/site-packages/invenio_records_resources/services/records/facets/facets.py
 
+# Patch for WTForms 3.x compatibility in invenio_oauth2server
+# iter_choices() returns 4 values in WTForms 3.x instead of 3
+RUN sed -i 's/for val, label, selected in field.iter_choices()/for val, label, selected, *_ in field.iter_choices()/g' /usr/local/lib/python3.9/site-packages/invenio_oauth2server/theme/semantic/form_styling.py
+
 RUN cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
     cp -r ./assets/. ${INVENIO_INSTANCE_PATH}/assets/ && \
     invenio collect --verbose  && \
