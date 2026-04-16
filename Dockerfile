@@ -21,6 +21,10 @@ COPY ./app_data/ ${INVENIO_INSTANCE_PATH}/app_data/
 COPY ./translations/ ${INVENIO_INSTANCE_PATH}/translations/
 COPY ./ .
 
+# Patch for https://github.com/inveniosoftware/invenio-records-resources/pull/663
+# KeyError in facets label_map when a resource type exists in OpenSearch but not in vocabulary
+RUN sed -i 's/"label": label_map\[key\]/"label": label_map.get(key, key)/g' /usr/local/lib/python3.9/site-packages/invenio_records_resources/services/records/facets/facets.py
+
 RUN cp -r ./static/. ${INVENIO_INSTANCE_PATH}/static/ && \
     cp -r ./assets/. ${INVENIO_INSTANCE_PATH}/assets/ && \
     invenio collect --verbose  && \
